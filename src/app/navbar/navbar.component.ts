@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(public authService : AuthService,private router : Router) { }
 
   ngOnInit(): void {
   }
 
+  handleLogout() {
+    this.authService.logout();
+    this.router.navigateByUrl("/login");
+  }
 }

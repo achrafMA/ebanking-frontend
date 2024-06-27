@@ -10,6 +10,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import { NewCustomerComponent } from './new-customer/new-customer.component';
 import { CustomerAccountsComponent } from './customer-accounts/customer-accounts.component';
+import { AdminTemplateComponent } from './admin-template/admin-template.component';
+import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { CustomerAccountsComponent } from './customer-accounts/customer-accounts
     CustomersComponent,
     AccountsComponent,
     NewCustomerComponent,
-    CustomerAccountsComponent
+    CustomerAccountsComponent,
+    AdminTemplateComponent,
+    NotAuthorizedComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,9 @@ import { CustomerAccountsComponent } from './customer-accounts/customer-accounts
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {provide : HTTP_INTERCEPTORS,useClass : AppHttpInterceptor,multi : true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
